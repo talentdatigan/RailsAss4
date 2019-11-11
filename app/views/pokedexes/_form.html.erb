@@ -1,0 +1,82 @@
+<%= form_with(model: pokedex, local: true) do |form| %>
+  <% if pokedex.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pokedex.errors.count, "error") %> prohibited this pokedex from being saved:</h2>
+
+      <ul>
+        <% pokedex.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Index %>
+    <%= form.number_field :Index %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Name %>
+    <%= form.text_field :Name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Type_1 %>
+    <%= form.text_field :Type_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Type_2 %>
+    <%= form.text_field :Type_2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Total %>
+    <%= form.number_field :Total %>
+  </div>
+
+  <div class="field">
+    <%= form.label :HP %>
+    <%= form.number_field :HP %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Attack %>
+    <%= form.number_field :Attack %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Defense %>
+    <%= form.number_field :Defense %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Sp_Atk %>
+    <%= form.number_field :Sp_Atk %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Sp_Def %>
+    <%= form.number_field :Sp_Def %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Speed %>
+    <%= form.number_field :Speed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Generation %>
+    <%= form.number_field :Generation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Legendary %>
+    <%= form.check_box :Legendary %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
