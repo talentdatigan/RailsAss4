@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  resources :credit_cards
-  resources :addresses
-  resources :customers
-  get 'map/index'
-  get 'errors/routing'
   resources :pokedexes
   root 'home#index'
   get '*a', :to => 'errors#routing'
