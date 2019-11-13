@@ -4,12 +4,9 @@ RSpec.describe PokedexesController, type: :routing do
   describe "routing" do
     it "routes to #index" do
       expect(:get => "/pokedexes").to route_to("pokedexes#index")
-    end
 
-    it "routes to error page" do
-      expect(:get => "*a").to route_to("errors#routing")
     end
-
+    
     it "routes to #show" do
       expect(:get => "/pokedexes/1").to route_to("pokedexes#show", :id => "1")
     end
