@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Addresses</h1>
+<% if current_user && current_user.admin = false %>
+<h3> logged in as: <%= current_user.email %></h3>
+<% elsif current_user.admin = true %>
+<h3> logged in as: Admin </h3>
+
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>Postcode</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @addresses.each do |address| %>
+        <td><%= address.user.email %></td>
+        <td><%= address.street %></td>
+        <td><%= address.city %></td>
+        <td><%= address.postcode %></td>
+        <td><%= link_to 'Show', address %></td>
+        <% if current_user && current_user.admin %>
+        <td><%= link_to 'Edit', edit_address_path(address) %></td>
+        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Address', new_address_path %>

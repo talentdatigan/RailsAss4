@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_165100) do
+ActiveRecord::Schema.define(version: 2019_11_16_121839) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street"
+    t.string "city"
+    t.string "postcode"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "number"
+    t.string "exp_date"
+    t.string "name_on_card"
+    t.string "organisation"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
 
   create_table "pokedexes", force: :cascade do |t|
     t.integer "Index"
@@ -30,4 +51,30 @@ ActiveRecord::Schema.define(version: 2019_11_11_165100) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer "addresses_id", null: false
+    t.integer "credit_cards_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["addresses_id"], name: "index_profiles_on_addresses_id"
+    t.index ["credit_cards_id"], name: "index_profiles_on_credit_cards_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "addresses", "users"
+  add_foreign_key "credit_cards", "users"
+  add_foreign_key "profiles", "addresses", column: "addresses_id"
+  add_foreign_key "profiles", "credit_cards", column: "credit_cards_id"
 end

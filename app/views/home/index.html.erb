@@ -1,3 +1,46 @@
+
+<% if current_user %>
+
+<h1> Hi <%= current_user.email.split('@')[0].capitalize%>
+
+<% end %>
 <h1>Welcome to the Pokemon Market!</h1>
 
-<p><h2>Here you can buy different pokemons</h2></p>
+<div class = "img-container">
+	<iframe src="https://giphy.com/embed/5fQyd7jM58m5y" width="480" height="360" align = "right" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</div>
+
+<p><h2>Here you can buy/view different pokemons</h2></p>
+
+<p>Only generation 1 though because the rest are not OG</p>
+
+
+<% if current_user %>
+
+<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+
+<% else %>
+
+<%= link_to 'Sign up', new_user_registration_path %>
+
+<%= link_to 'Sign in', new_user_session_path %>
+
+<% end %>
+
+
+
+
+
+
+
+<div class = 'text-container' align="bottom">
+<% if current_user == nil %>
+<h3> Yet to sign in </h3>
+<% elsif current_user && current_user.admin == false %>
+<h3> logged in as: <%= current_user.email %> </h3>
+<% elsif current_user.admin == true %>
+<h3> logged in as: Admin </h3>
+
+<% end %>
+</div>
+
