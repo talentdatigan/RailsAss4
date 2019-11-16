@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :profiles
   resources :credit_cards
-  get 'profile/index'
   resources :addresses
   get 'posts/index'
   devise_for :users

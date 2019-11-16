@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Addresses</h1>
-<% if current_user && current_user.admin = false %>
+<% if current_user && current_user.admin == false %>
 <h3> logged in as: <%= current_user.email %></h3>
-<% elsif current_user.admin = true %>
+<% elsif current_user.admin == true %>
 <h3> logged in as: Admin </h3>
 
 <% end %>
