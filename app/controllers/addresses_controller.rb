@@ -1,6 +1,10 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+
+  def authenticate_admin
+    redirect_to '/', alert: 'Not authorized.' unless current_user.admin
+  end
   # GET /addresses
   # GET /addresses.json
 

@@ -2,6 +2,10 @@ class CreditCardsController < ApplicationController
   before_action :set_credit_card, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+  def authenticate_admin
+    redirect_to '/', alert: 'Not authorized.' unless current_user.admin
+  end
+
   # GET /credit_cards
   # GET /credit_cards.json
   def index

@@ -15,17 +15,19 @@
 
   <tbody>
     <% @credit_cards.each do |credit_card| %>
+    <% if credit_card.user == current_user or current_user.admin? %>
       <tr>
         <td><%= credit_card.number %></td>
         <td><%= credit_card.exp_date %></td>
         <td><%= credit_card.name_on_card %></td>
         <td><%= credit_card.organisation %></td>
         <td><%= link_to 'Show', credit_card %></td>
-        <% if current_user && current_user.admin %>
+        <% if current_user && current_user.admin or credit_card.user == current_user %>
         <td><%= link_to 'Edit', edit_credit_card_path(credit_card) %></td>
         <td><%= link_to 'Destroy', credit_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
          <%end %>
       </tr>
+    <%end %>
     <% end %>
   </tbody>
 </table>
