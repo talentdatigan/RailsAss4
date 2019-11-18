@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @order.price %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @order.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @order.city %>
+</p>
+
+<p>
+  <strong>Postcode:</strong>
+  <%= @order.postcode %>
+</p>
+
+<p>
+  <strong>Card no:</strong>
+  <%= @order.card_no %>
+</p>
+
+<p>
+  <strong>Exp date:</strong>
+  <%= @order.exp_date %>
+</p>
+
+<p>
+  <strong>Name on card:</strong>
+  <%= @order.name_on_card %>
+</p>
+
+<p>
+  <strong>Organisation:</strong>
+  <%= @order.organisation %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @order.address_id %>
+</p>
+
+<p>
+  <strong>Credit card:</strong>
+  <%= @order.credit_card_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @order.user_id %>
+</p>
+
+<p>
+  <strong>Pokedex:</strong>
+  <%= @order.pokedex_id %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

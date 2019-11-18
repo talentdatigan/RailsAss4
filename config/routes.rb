@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   resources :profiles
   resources :credit_cards
   resources :addresses

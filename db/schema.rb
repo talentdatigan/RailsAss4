@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_16_121839) do
+ActiveRecord::Schema.define(version: 2019_11_18_175320) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -31,6 +31,27 @@ ActiveRecord::Schema.define(version: 2019_11_16_121839) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "price"
+    t.string "street"
+    t.string "city"
+    t.string "postcode"
+    t.string "card_no"
+    t.string "exp_date"
+    t.string "name_on_card"
+    t.string "organisation"
+    t.integer "address_id", null: false
+    t.integer "credit_card_id", null: false
+    t.integer "user_id", null: false
+    t.integer "pokedex_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_orders_on_address_id"
+    t.index ["credit_card_id"], name: "index_orders_on_credit_card_id"
+    t.index ["pokedex_id"], name: "index_orders_on_pokedex_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "pokedexes", force: :cascade do |t|
@@ -75,6 +96,10 @@ ActiveRecord::Schema.define(version: 2019_11_16_121839) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "credit_cards", "users"
+  add_foreign_key "orders", "addresses"
+  add_foreign_key "orders", "credit_cards"
+  add_foreign_key "orders", "pokedexes"
+  add_foreign_key "orders", "users"
   add_foreign_key "profiles", "addresses", column: "addresses_id"
   add_foreign_key "profiles", "credit_cards", column: "credit_cards_id"
 end

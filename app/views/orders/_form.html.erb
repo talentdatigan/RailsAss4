@@ -1,0 +1,99 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+    <%= form.label :user_id %>
+    <%= current_user.email.split('@')[0].capitalize%>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :Pokemon %>
+    <%= form.collection_select(:pokedex_id, @pokedexes, :id, :Name ) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%=  rand(20...100) %> $
+  </div>
+
+  <div class="field">
+    <%= form.label :street %>
+    <%@addresses.each do |x|%>
+    <% if x.user == current_user %>
+    <%= form.text_field :street, :value => x.street%>
+    <%end %>
+    <% end%>
+
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%@addresses.each do |x|%>
+    <% if x.user == current_user %>
+    <%= form.text_field :city, :value => x.city%>
+    <%end %>
+    <% end%>
+  </div>
+
+  <div class="field">
+    <%= form.label :postcode %>
+    <%@addresses.each do |x|%>
+    <% if x.user == current_user %>
+    <%= form.text_field :postcode, :value => x.postcode%>
+    <%end %>
+    <% end%>
+  </div>
+
+  <div class="field">
+    <%= form.label :card_no %>
+    <%@credit_cards.each do |y|%>
+    <% if y.user == current_user %>
+    <%= form.text_field :card_no, :value => y.number%>
+    <%end%>
+    <%end%>
+  </div>
+
+  <div class="field">
+    <%= form.label :exp_date %>
+    <%@credit_cards.each do |y|%>
+    <% if y.user == current_user %>
+    <%= form.text_field :exp_date, :value => y.exp_date%>
+    <%end%>
+    <%end%>
+  </div>
+
+  <div class="field">
+    <%= form.label :name_on_card %>
+    <%@credit_cards.each do |y|%>
+    <% if y.user == current_user %>
+    <%= form.text_field :name_on_card, :value => y.name_on_card %>
+    <%end%>
+    <%end%> 
+  </div>
+
+  <div class="field">
+    <%= form.label :organisation %>
+    <%@credit_cards.each do |y|%>
+    <% if y.user == current_user %>
+    <%= form.text_field :organisation, :value => y.organisation%>
+    <%end%>
+    <%end%>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
