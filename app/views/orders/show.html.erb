@@ -40,25 +40,7 @@
   <%= @order.organisation %>
 </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @order.address_id %>
-</p>
 
-<p>
-  <strong>Credit card:</strong>
-  <%= @order.credit_card_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @order.user_id %>
-</p>
-
-<p>
-  <strong>Pokedex:</strong>
-  <%= @order.pokedex_id %>
-</p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

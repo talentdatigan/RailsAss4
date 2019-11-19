@@ -24,7 +24,7 @@
 
   <div class="field">
     <%= form.label :price %>
-    <%=  rand(20...100) %> $
+    <%= form.text_field :price, :value => rand(20...100), readonly: true %> $
   </div>
 
   <div class="field">
@@ -40,7 +40,7 @@
   <div class="field">
     <%= form.label :city %>
     <%@addresses.each do |x|%>
-    <% if x.user == current_user %>
+    <% if x.user == current_user && x.city != nil %>
     <%= form.text_field :city, :value => x.city%>
     <%end %>
     <% end%>
@@ -91,7 +91,23 @@
     <%end%>
   </div>
 
+  <div class = "field">
+    <%= form.label :address_id %>
+    <%@addresses.each do |x|%>
+    <% if x.user == current_user %>
+    <%= form.text_field :address_id, :value => x.id, readonly: true %>
+    <%end%>
+    <%end%>
+  </div>
 
+  <div class = "field">
+    <%= form.label :credit_card_id %>
+    <%@credit_cards.each do |y|%>
+    <% if y.user == current_user %>
+    <%=form.text_field :credit_card_id, :value => y.id, readonly: true%>
+    <%end%>
+    <%end%>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
