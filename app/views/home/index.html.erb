@@ -1,7 +1,7 @@
-
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
 <% if current_user %>
 
-<h1> Hi <%= current_user.email.split('@')[0].capitalize%>
+<h1> Hi <%= current_user.email.split('@')[0].capitalize%></h1>
 
 <% end %>
 <h1>Welcome to the Pokemon Market!</h1>
@@ -27,11 +27,6 @@
 <% end %>
 
 
-
-
-
-
-
 <div class = 'text-container' align="bottom">
 <% if current_user == nil %>
 <h3> Yet to sign in </h3>
@@ -42,4 +37,100 @@
 
 <% end %>
 </div>
+
+
+
+<div id="container" style="width:60%; height:400px; align-content: bottom"></div>
+
+<script>
+    Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Types of pokemons'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: [{
+        name: 'Types',
+        colorByPoint: true,
+        data: [{
+            name: 'Normal',
+            y: <%= @normal %>,
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Fire',
+            y: <%= @fire %>
+        }, {
+            name: 'Fighting',
+            y: <%= @fighting %>
+        }, {
+            name: 'Water',
+            y: <%= @water %>
+        }, {
+            name: 'Flying',
+            y: <%= @flying %>
+        }, {
+            name: 'Grass',
+            y: <%=@grass %>
+        }, {
+            name: 'Poison',
+            y: <%=@poison%>
+        }, {
+            name: 'Electric',
+            y: <%= @electric %>
+        }, {
+            name: 'Ground',
+            y: <%= @ground %>
+     	},{
+     		name: 'Psychic',
+     		y: <%= @psychic %>
+     	},{
+     		name: 'Rock',
+     		y: <%= @rock %>
+     	},{
+     		name: 'Ice',
+     		y: <%= @ice %>
+     	},{
+     		name: 'Bug',
+     		y: <%= @bug %>
+     	},{
+     		name: 'Dragon',
+     		y: <%= @dragon %>
+     	},{
+     		name: 'Ghost',
+     		y: <%= @ghost %>
+     	},{
+     		name: 'Dark',
+     		y: <%= @dark %>
+     	},{
+     		name: 'Steel',
+     		y: <%= @steel %>
+     	},{
+     		name: 'Fairy',
+     		y: <%= @fairy %>
+
+
+        }]
+    }]
+});
+
+
+</script>
 

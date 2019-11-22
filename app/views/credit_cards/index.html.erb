@@ -17,7 +17,7 @@
     <% @credit_cards.each do |credit_card| %>
     <% if credit_card.user == current_user or current_user.admin? %>
       <tr>
-        <td><%= credit_card.number %></td>
+        <td><%= credit_card.number[-4..-1] %></td>
         <td><%= credit_card.exp_date %></td>
         <td><%= credit_card.name_on_card %></td>
         <td><%= credit_card.organisation %></td>
@@ -34,4 +34,8 @@
 
 <br>
 
-<%= link_to 'New Credit Card', new_credit_card_path %>
+<% @credit_cards.each do |credit_card| %>
+<% if credit_card.user == nil %>
+<%= link_to 'Add a card', new_credit_card_path %>
+<% end %>
+<% end %>

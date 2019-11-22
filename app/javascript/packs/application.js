@@ -3,11 +3,18 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+import Highcharts from 'highcharts';
+
+window.Highcharts = Highcharts;
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 requre('bootstrap-sockets')
 require("channels")
+require("/packs/highcharts.js")
+//= jquery
+//= jquery_ujs
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

@@ -4,7 +4,11 @@ class PokedexesController < ApplicationController
   # GET /pokedexes
   # GET /pokedexes.json
   def index
-    @pokedexes = Pokedex.all
+    @pokedexes = if params[:term]
+    Pokedex.where('name LIKE ?',"%#{params[:term]}%")
+  else
+  Pokedex.all
+  end
   end
 
   # GET /pokedexes/1
@@ -20,6 +24,6 @@ class PokedexesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pokedex_params
-      params.require(:pokedex).permit(:Index, :Name, :Type_1, :Type_2, :Total, :HP, :Attack, :Defense, :Sp_Atk, :Sp_Def, :Speed, :Generation, :Legendary)
+      params.require(:pokedex).permit(:Index,:term, :Name, :Type_1, :Type_2, :Total, :HP, :Attack, :Defense, :Sp_Atk, :Sp_Def, :Speed, :Generation, :Legendary)
     end
 end

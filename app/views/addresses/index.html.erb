@@ -39,5 +39,8 @@
 <br>
 
 
-
-<%= link_to 'New Address', new_address_path %>
+<%@addresses.each do |address| %>
+<% if address.user == nil %>
+<%= link_to 'Create Address', new_address_path %>
+<% end %>
+<% end %>

@@ -2,6 +2,13 @@
 
 <h1>Pokedex</h1>
 
+<div class="searchForm">
+<%= form_tag(pokedexes_path, method: :get) do %>
+<%= text_field_tag :term,params[:term] %>
+<%= submit_tag 'Search' %>
+<% end %>
+</div>
+
 <table>
   <thead>
     <tr>
