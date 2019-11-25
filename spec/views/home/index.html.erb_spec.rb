@@ -20,12 +20,7 @@ scenario 'has sign in feature' do
     end
 	end	
 
-feature 'Home page' do 
-scenario 'has sign out feature' do
-		visit '/'
-       expect(page).to have_content('Sign out')
-    end
-	end	
+
 
 feature 'Home page' do 
 scenario 'has sign up feature' do

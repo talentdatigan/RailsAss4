@@ -4,10 +4,9 @@ RSpec.describe "credit_cards/new", type: :view do
   before(:each) do
     assign(:credit_card, CreditCard.new(
       :number => "MyString",
-      :exp_date => "MyString",
       :name_on_card => "MyString",
-      :organisation => "MyString",
-      :user => nil
+      :organisation => 'American Express'
+      
     ))
   end
 
@@ -18,13 +17,10 @@ RSpec.describe "credit_cards/new", type: :view do
 
       assert_select "input[name=?]", "credit_card[number]"
 
-      assert_select "input[name=?]", "credit_card[exp_date]"
 
       assert_select "input[name=?]", "credit_card[name_on_card]"
 
-      assert_select "input[name=?]", "credit_card[organisation]"
 
-      assert_select "input[name=?]", "credit_card[user_id]"
     end
   end
 end

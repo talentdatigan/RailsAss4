@@ -5,8 +5,8 @@ RSpec.describe "addresses/new", type: :view do
     assign(:address, Address.new(
       :street => "MyString",
       :city => "MyString",
-      :postcode => "MyString",
-      :user => nil
+      :postcode => "MyString"
+      
     ))
   end
 
@@ -21,7 +21,6 @@ RSpec.describe "addresses/new", type: :view do
 
       assert_select "input[name=?]", "address[postcode]"
 
-      assert_select "input[name=?]", "address[user_id]"
     end
   end
 end
