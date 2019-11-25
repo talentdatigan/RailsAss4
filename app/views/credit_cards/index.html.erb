@@ -34,8 +34,7 @@
 
 <br>
 
-<% @credit_cards.each do |credit_card| %>
-<% if credit_card.user == nil %>
+
+<% if @credit_cards.all? { |e| e.user != current_user  } %>
 <%= link_to 'Add a card', new_credit_card_path %>
-<% end %>
 <% end %>
