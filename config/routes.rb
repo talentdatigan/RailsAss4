@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'map/index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :orders
   resources :profiles
