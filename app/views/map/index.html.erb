@@ -1,22 +1,129 @@
+
+
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
    crossorigin=""/> 
  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"  
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
+<img src="https://www.pogomap.info/images/markergymnew.png" alt="Gym: Upper Wincobank Undeonminational Chapel" width="28" height="26">
 
- <div id="mapid">
+
+    <%= PokeApi.get(pokemon: 'bulbasaur').abilities %>
+<div id="mapid">
  	
+
 <script>
-var map = L.map('mapid').setView([51.505, -0.09], 13);
+
+
+var map = L.map('mapid').setView([51.505, -0.09], 2);
+ var bulbasaur_name = "<%= PokeApi.get(pokemon: 'bulbasaur').name %>";
+ var bulbasaur_abilities = "<%= PokeApi.get(pokemon: 'bulbasaur').abilities %>";
+var bulbasaur = L.icon({
+    iconUrl: '/assets/bulbasaur.png',
+    
+
+    iconSize:     [38, 75], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var squirtle = L.icon({
+    iconUrl: '/assets/squirtle.png',
+    
+
+    iconSize:     [38, 75], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var charmander = L.icon({
+    iconUrl: '/assets/charmander.jpg',
+    
+
+    iconSize:     [38, 75], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var caterpie = L.icon({
+    iconUrl: '/assets/caterpie.png',
+    
+
+    iconSize:     [38, 40], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var lucario = L.icon({
+    iconUrl: '/assets/lucario.png',
+    
+
+    iconSize:     [80, 75], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var pickachu = L.icon({
+    iconUrl: '/assets/pickachu.png',
+    
+
+    iconSize:     [80, 75], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+
+var metapod = L.icon({
+    iconUrl: '/assets/metapod.jpg',
+    
+
+    iconSize:     [50, 40], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+ 
+
+
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-L.marker([51.5, -0.09]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    .openPopup();
+L.marker([51.5, -0.09],{icon: bulbasaur}).addTo(map)
+    .bindPopup(bulbasaur_name)
+    .bindPopup(bulbasaur_abilities)
+   
+L.marker([36.5, 15],{icon: squirtle}).addTo(map)
+    .bindPopup('A wild squirtle has appeared!.')
 
+L.marker([-10, 20],{icon: charmander}).addTo(map)
+    .bindPopup('A wild charmander has appeared!.')
+
+L.marker([15, 50],{icon: lucario}).addTo(map)
+    .bindPopup('A wild lucario has appeared!.')
+
+L.marker([50, 60],{icon: caterpie}).addTo(map)
+    .bindPopup('A wild caterpie has appeared!.')
+
+L.marker([32, 100],{icon: pickachu}).addTo(map)
+    .bindPopup('A wild pickachu has appeared!.')
+
+L.marker([32, -100],{icon: metapod}).addTo(map)
+    .bindPopup('A wild metapod has appeared!.')
+    
 </script>
 </div>
