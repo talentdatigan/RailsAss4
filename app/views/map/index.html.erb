@@ -8,8 +8,6 @@
    crossorigin=""></script>
 <img src="https://www.pogomap.info/images/markergymnew.png" alt="Gym: Upper Wincobank Undeonminational Chapel" width="28" height="26">
 
-
-    <%= PokeApi.get(pokemon: 'bulbasaur').abilities %>
 <div id="mapid">
  	
 
@@ -18,7 +16,31 @@
 
 var map = L.map('mapid').setView([51.505, -0.09], 2);
  var bulbasaur_name = "<%= PokeApi.get(pokemon: 'bulbasaur').name %>";
- var bulbasaur_abilities = "<%= PokeApi.get(pokemon: 'bulbasaur').abilities %>";
+ var bulbasaur_base_exp = "<%= PokeApi.get(pokemon: 'bulbasaur').base_experience %>";
+
+ var squirtle_name  = "<%= PokeApi.get(pokemon: 'squirtle').name %>";
+  var squirtle_base_exp = "<%= PokeApi.get(pokemon: 'squirtle').base_experience %>";
+
+var charmander_name  = "<%= PokeApi.get(pokemon: 'charmander').name %>";
+  var charmander_base_exp = "<%= PokeApi.get(pokemon: 'charmander').base_experience %>";
+
+var caterpie_name  = "<%= PokeApi.get(pokemon: 'caterpie').name %>";
+  var caterpie_base_exp = "<%= PokeApi.get(pokemon: 'caterpie').base_experience %>";
+
+var lucario_name  = "<%= PokeApi.get(pokemon: 'lucario').name %>";
+  var lucario_base_exp = "<%= PokeApi.get(pokemon: 'lucario').base_experience %>";
+
+
+var pikachu_name  = "<%= PokeApi.get(pokemon: 'pikachu').name %>";
+  var pikachu_base_exp = "<%= PokeApi.get(pokemon: 'pikachu').base_experience %>";
+
+
+var metapod_name  = "<%= PokeApi.get(pokemon: 'metapod').name %>";
+  var metapod_base_exp = "<%= PokeApi.get(pokemon: 'metapod').base_experience %>";
+
+var kanto_region = "<%= PokeApi.get(region: 'kanto').name %>";
+
+
 var bulbasaur = L.icon({
     iconUrl: '/assets/bulbasaur.png',
     
@@ -95,6 +117,13 @@ var metapod = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
+var customOptions =
+    {
+    'maxWidth': '400',
+    'width': '200',
+    'className' : 'popupCustom'
+    }
+
  
 
 
@@ -103,27 +132,34 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-L.marker([51.5, -0.09],{icon: bulbasaur}).addTo(map)
-    .bindPopup(bulbasaur_name)
-    .bindPopup(bulbasaur_abilities)
+
+L.marker([50, 10]).addTo(map)
+    .bindPopup(`Region: ${kanto_region}`,customOptions)
+
+L.marker([51.5, -0.09],
+    {icon: bulbasaur}).addTo(map)
+    .bindPopup(`Name : ${bulbasaur_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'bulbasaur').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${bulbasaur_base_exp}`,customOptions)
+   
    
 L.marker([36.5, 15],{icon: squirtle}).addTo(map)
-    .bindPopup('A wild squirtle has appeared!.')
+    .bindPopup(`Name : ${squirtle_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'squirtle').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${squirtle_base_exp}`,customOptions)
 
 L.marker([-10, 20],{icon: charmander}).addTo(map)
-    .bindPopup('A wild charmander has appeared!.')
+    .bindPopup(`Name : ${charmander_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'charmander').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${charmander_base_exp}`,customOptions)
 
 L.marker([15, 50],{icon: lucario}).addTo(map)
-    .bindPopup('A wild lucario has appeared!.')
+    .bindPopup(`Name : ${lucario_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'lucario').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${lucario_base_exp}`,customOptions)
 
 L.marker([50, 60],{icon: caterpie}).addTo(map)
-    .bindPopup('A wild caterpie has appeared!.')
+    .bindPopup(`Name : ${caterpie_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'caterpie').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${caterpie_base_exp}`,customOptions)
 
 L.marker([32, 100],{icon: pickachu}).addTo(map)
-    .bindPopup('A wild pickachu has appeared!.')
+    .bindPopup(`Name : ${pikachu_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'pikachu').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${pikachu_base_exp}`,customOptions)
 
 L.marker([32, -100],{icon: metapod}).addTo(map)
-    .bindPopup('A wild metapod has appeared!.')
-    
+    .bindPopup(`Name : ${metapod_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'metapod').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${metapod_base_exp}`,customOptions)
+
+
+
 </script>
 </div>
