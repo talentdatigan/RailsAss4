@@ -7,14 +7,14 @@
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
 <img src="https://www.pogomap.info/images/markergymnew.png" alt="Gym: Upper Wincobank Undeonminational Chapel" width="28" height="26">
-
+<h3>Welcome to the pokemon map! Here you can view a variety of pokemons from different regions</h3>
 <div id="mapid">
 
 
 <script>
 // RUN npm install pokemon-font
 
-var map = L.map('mapid').setView([51.505, -0.09], 2);
+var map = L.map('mapid').setView([51.505, -0.09], 4);
  var bulbasaur_name = "<%= PokeApi.get(pokemon: 'bulbasaur').name %>";
  var bulbasaur_base_exp = "<%= PokeApi.get(pokemon: 'bulbasaur').base_experience %>";
 
@@ -34,12 +34,50 @@ var lucario_name  = "<%= PokeApi.get(pokemon: 'lucario').name %>";
 var pikachu_name  = "<%= PokeApi.get(pokemon: 'pikachu').name %>";
   var pikachu_base_exp = "<%= PokeApi.get(pokemon: 'pikachu').base_experience %>";
 
+var abra_name  = "<%= PokeApi.get(pokemon: 'abra').name %>";
+  var abra_base_exp = "<%= PokeApi.get(pokemon: 'abra').base_experience %>";
+
+  var clefairy_name  = "<%= PokeApi.get(pokemon: 'clefairy').name %>";
+  var clefairy_base_exp = "<%= PokeApi.get(pokemon: 'clefairy').base_experience %>";
+
+  var diglett_name  = "<%= PokeApi.get(pokemon: 'diglett').name %>";
+  var diglett_base_exp = "<%= PokeApi.get(pokemon: 'diglett').base_experience %>";
+
+  var ekans_name  = "<%= PokeApi.get(pokemon: 'ekans').name %>";
+  var ekans_base_exp = "<%= PokeApi.get(pokemon: 'ekans').base_experience %>";
+
+  var fearow_name  = "<%= PokeApi.get(pokemon: 'fearow').name %>";
+  var fearow_base_exp = "<%= PokeApi.get(pokemon: 'fearow').base_experience %>";
+
+  var geodude_name  = "<%= PokeApi.get(pokemon: 'geodude').name %>";
+  var geodude_base_exp = "<%= PokeApi.get(pokemon: 'geodude').base_experience %>";
+
+  var haunter_name  = "<%= PokeApi.get(pokemon: 'haunter').name %>";
+  var haunter_base_exp = "<%= PokeApi.get(pokemon: 'haunter').base_experience %>";
+
+  var machop_name  = "<%= PokeApi.get(pokemon: 'machop').name %>";
+  var machop_base_exp = "<%= PokeApi.get(pokemon: 'machop').base_experience %>";
+
+  var mankey_name  = "<%= PokeApi.get(pokemon: 'mankey').name %>";
+  var mankey_base_exp = "<%= PokeApi.get(pokemon: 'mankey').base_experience %>";
+
+  var pidgey_name  = "<%= PokeApi.get(pokemon: 'pidgey').name %>";
+  var pidgey_base_exp = "<%= PokeApi.get(pokemon: 'pidgey').base_experience %>";
+
+  var psyduck_name  = "<%= PokeApi.get(pokemon: 'psyduck').name %>";
+  var psyduck_base_exp = "<%= PokeApi.get(pokemon: 'psyduck').base_experience %>";
+
 
 var metapod_name  = "<%= PokeApi.get(pokemon: 'metapod').name %>";
   var metapod_base_exp = "<%= PokeApi.get(pokemon: 'metapod').base_experience %>";
 
 var kanto_region = "<%= PokeApi.get(region: 'kanto').name %>";
 
+var johto_region = "<%= PokeApi.get(region: 'johto').name%>";
+
+var hoenn_region =  "<%= PokeApi.get(region: 'hoenn').name%>";
+
+var sinnoh_region = "<%= PokeApi.get(region: 'sinnoh').name%>";
 
 var bulbasaur = L.icon({
     iconUrl: '/assets/bulbasaur.png',
@@ -116,6 +154,116 @@ var metapod = L.icon({
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
+var abra = L.icon({
+    iconUrl: '/assets/abra.png',
+    
+
+    iconSize:     [50, 40], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var clefairy = L.icon({
+    iconUrl: '/assets/clefairy.png',
+    
+
+    iconSize:     [58, 48], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var diglett = L.icon({
+    iconUrl: '/assets/diglett.png',
+    
+
+    iconSize:     [50, 40], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var ekans = L.icon({
+    iconUrl: '/assets/ekans.png',
+    
+
+    iconSize:     [65, 55], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var fearow = L.icon({
+    iconUrl: '/assets/fearow.png',
+    
+
+    iconSize:     [75, 60], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var geodude = L.icon({
+    iconUrl: '/assets/geodude.png',
+    
+
+    iconSize:     [65, 65], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var haunter = L.icon({
+    iconUrl: '/assets/haunter.png',
+    
+
+    iconSize:     [65, 55], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var machop = L.icon({
+    iconUrl: '/assets/machop.png',
+    
+
+    iconSize:     [65, 55], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var mankey = L.icon({
+    iconUrl: '/assets/mankey.png',
+    
+
+    iconSize:     [65, 55], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var pidgey = L.icon({
+    iconUrl: '/assets/pidgey.png',
+    
+
+    iconSize:     [65, 55], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var psyduck = L.icon({
+    iconUrl: '/assets/psyduck.png',
+    
+
+    iconSize:     [65, 55], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
 
 
 
@@ -137,6 +285,17 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 L.marker([50, 10]).addTo(map)
     .bindPopup(`Region: ${kanto_region}`,customOptions)
+
+
+L.marker([-5, 30]).addTo(map)
+    .bindPopup(`Region: ${johto_region}`,customOptions)
+
+
+L.marker([40, 70]).addTo(map)
+    .bindPopup(`Region: ${hoenn_region}`,customOptions)
+
+L.marker([32, -90]).addTo(map)
+    .bindPopup(`Region: ${sinnoh_region}`,customOptions)
 
 L.marker([51.5, -0.09],
     {icon: bulbasaur}).addTo(map)
@@ -160,6 +319,45 @@ L.marker([32, 100],{icon: pickachu}).addTo(map)
 
 L.marker([32, -100],{icon: metapod}).addTo(map)
     .bindPopup(`Name : ${metapod_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'metapod').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${metapod_base_exp}`,customOptions)
+   
+L.marker([45, 13],{icon: abra}).addTo(map)
+    .bindPopup(`Name : ${abra_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'abra').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${abra_base_exp}`,customOptions)
+
+L.marker([46, 5],{icon: clefairy}).addTo(map)
+    .bindPopup(`Name : ${clefairy_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'clefairy').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${clefairy_base_exp}`,customOptions)
+
+L.marker([40, -100],{icon: diglett}).addTo(map)
+    .bindPopup(`Name : ${diglett_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'diglett').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${diglett_base_exp}`,customOptions)
+
+L.marker([-10, 32],{icon: ekans}).addTo(map)
+    .bindPopup(`Name : ${ekans_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'ekans').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${ekans_base_exp}`,customOptions)
+
+L.marker([39, 65.2],{icon: fearow}).addTo(map)
+    .bindPopup(`Name : ${fearow_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'fearow').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${fearow_base_exp}`,customOptions)
+
+L.marker([35, -3],{icon: geodude}).addTo(map)
+    .bindPopup(`Name : ${geodude_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'geodude').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${geodude_base_exp}`,customOptions)
+
+L.marker([35, 110],{icon: haunter}).addTo(map)
+    .bindPopup(`Name : ${haunter_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'haunter').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${haunter_base_exp}`,customOptions)
+
+L.marker([30, 50],{icon: machop}).addTo(map)
+    .bindPopup(`Name : ${machop_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'machop').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${machop_base_exp}`,customOptions)
+
+L.marker([36, 30],{icon: mankey}).addTo(map)
+    .bindPopup(`Name : ${mankey_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'mankey').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${mankey_base_exp}`,customOptions)
+
+L.marker([45, 40],{icon: pidgey}).addTo(map)
+    .bindPopup(`Name : ${pidgey_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'pidgey').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${pidgey_base_exp}`,customOptions)
+
+
+L.marker([45, -115],{icon: psyduck}).addTo(map)
+    .bindPopup(`Name : ${psyduck_name} \n | Abilities : ${"<% PokeApi.get(pokemon: 'psyduck').abilities.each do |ability|%> <%= ability.ability.name %> <%end%>"} \n | Base Experience : ${psyduck_base_exp}`,customOptions)
+
+
+
+
+
 
 
 
