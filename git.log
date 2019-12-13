@@ -1,0 +1,18 @@
+* 99d6723 : filled map with pokemons & more api calls
+* 5f21e9b :  changed production.rb to allow assets to be compiled from local
+* abeef40 : changed to relative path of images for heroku
+* d19e388 : Added API calls for pokemons , added pokemon font testing for heroku
+* 0d78f63 : Added gem for pokeAPI and made first calls
+* 4aa57a0 : fixed orders for customers with no address & added leaflet map
+* b2e39f7 : solved last tests
+* 4003f0e : now user can have only 1 address , added admin panel
+* 211cc4c : updated for heroku push
+* bf7fa0a : added highcharts, cool gifs and search bar
+* 172ad50 : Fixed order page and updated gemfile for heroku
+* 058fecb : added customer orders
+* b01e7ee : added security featuress
+* 2ca3fef : added user profile
+* af937cc : linked user tables and created profile for user/ admin features & non admin features
+* 73e8a63 : Added tests for sign features, errors page
+* 9b93f84 : added customer credentials
+* b2015c1 : initial commit(tests&layout)

@@ -14,7 +14,8 @@ Rails 6.0.1
 // then save @user.save
 //API calls are made on the pogo map( every pokemon's attributes are called from the pokeAPI website ( see the map view).
 // To enter ADMIN panel just go to /admin (you can only access it if u are admin).
+//to check for tests type rspec in console.
 
-  
+// link to heroku: https://intense-wave-82928.herokuapp.com/
 
 * ...
